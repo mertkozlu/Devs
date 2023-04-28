@@ -36,4 +36,7 @@ public class ProgrammingLanguage {
     public void setName(String name) {
         this.name = name;
     }
+
+    public void delete(ProgrammingLanguage programmingLanguage) {
+    }
 }

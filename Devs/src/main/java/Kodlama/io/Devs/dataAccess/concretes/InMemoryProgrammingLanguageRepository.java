@@ -40,6 +40,8 @@ public class InMemoryProgrammingLanguageRepository implements ProgrammingLanguag
 
     @Override
     public void delete(ProgrammingLanguage programmingLanguage) {
-
+        programmingLanguage.delete(programmingLanguage);
     }
+
+
 }
