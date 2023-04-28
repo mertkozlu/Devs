@@ -19,4 +19,26 @@ public class ProgrammingLanguageManager implements ProgrammingLanguageService {
     public List<ProgrammingLanguage> getAll() {
         return programmingLanguageRepository.getAll();
     }
+
+    @Override
+    public ProgrammingLanguage getById(int id) {
+        return programmingLanguageRepository.getById(id);
+    }
+
+    @Override
+    public ProgrammingLanguage add(ProgrammingLanguage programmingLanguage) {
+        return programmingLanguageRepository.add(programmingLanguage);
+    }
+
+    @Override
+    public ProgrammingLanguage update(ProgrammingLanguage programmingLanguage) {
+        return programmingLanguageRepository.update(programmingLanguage);
+    }
+
+    @Override
+    public void delete(ProgrammingLanguage programmingLanguage) {
+        programmingLanguageRepository.delete(programmingLanguage);
+
+    }
+
 }

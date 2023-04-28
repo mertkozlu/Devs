@@ -22,4 +22,24 @@ public class InMemoryProgrammingLanguageRepository implements ProgrammingLanguag
     public List<ProgrammingLanguage> getAll() {
         return programmingLanguages;
     }
+
+    @Override
+    public ProgrammingLanguage getById(int id) {
+        return null;
+    }
+
+    @Override
+    public ProgrammingLanguage add(ProgrammingLanguage programmingLanguage) {
+        return null;
+    }
+
+    @Override
+    public ProgrammingLanguage update(ProgrammingLanguage programmingLanguage) {
+        return null;
+    }
+
+    @Override
+    public void delete(ProgrammingLanguage programmingLanguage) {
+
+    }
 }

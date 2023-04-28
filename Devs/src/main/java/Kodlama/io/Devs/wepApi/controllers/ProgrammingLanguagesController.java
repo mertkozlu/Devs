@@ -3,9 +3,7 @@ package Kodlama.io.Devs.wepApi.controllers;
 import Kodlama.io.Devs.business.abstracts.ProgrammingLanguageService;
 import Kodlama.io.Devs.entities.concretes.ProgrammingLanguage;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 @RestController
@@ -20,4 +18,21 @@ public class ProgrammingLanguagesController {
     public List<ProgrammingLanguage>getAll() {
         return programmingLanguageService.getAll();
     }
+    @PostMapping("/add")
+    public ProgrammingLanguage add(ProgrammingLanguage programmingLanguage) {
+        return programmingLanguageService.add(programmingLanguage);
+    }
+    @GetMapping("/getById")
+    public ProgrammingLanguage getById(int id) {
+        return programmingLanguageService.getById(id);
+    }
+    @PutMapping("/update")
+    public ProgrammingLanguage update(ProgrammingLanguage programmingLanguage) {
+        return programmingLanguageService.update(programmingLanguage);
+    }
+    @DeleteMapping("/delete")
+    public void delete(ProgrammingLanguage programmingLanguage) {
+        programmingLanguageService.delete(programmingLanguage);
+    }
+
 }
