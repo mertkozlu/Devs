@@ -13,9 +13,9 @@ public class InMemoryProgrammingLanguageRepository implements ProgrammingLanguag
 
     public InMemoryProgrammingLanguageRepository() {
         programmingLanguages = new ArrayList<ProgrammingLanguage>();
-        programmingLanguages.add(new ProgrammingLanguage(1,"Java"));
-        programmingLanguages.add(new ProgrammingLanguage(2,"C#"));
-        programmingLanguages.add(new ProgrammingLanguage(3,"Python"));
+        programmingLanguages.add(new ProgrammingLanguage(1, "Java"));
+        programmingLanguages.add(new ProgrammingLanguage(2, "C#"));
+        programmingLanguages.add(new ProgrammingLanguage(3, "Python"));
     }
 
     @Override
@@ -25,22 +25,33 @@ public class InMemoryProgrammingLanguageRepository implements ProgrammingLanguag
 
     @Override
     public ProgrammingLanguage getById(int id) {
+        for (ProgrammingLanguage programmingLanguage : programmingLanguages) {
+            if (programmingLanguage.getId() == id) {
+                return programmingLanguage;
+            }
+        }
         return null;
     }
 
     @Override
-    public ProgrammingLanguage add(ProgrammingLanguage programmingLanguage) {
-        return null;
+    public void add(ProgrammingLanguage programmingLanguage) {
+        programmingLanguages.add(programmingLanguage);
     }
 
     @Override
-    public ProgrammingLanguage update(ProgrammingLanguage programmingLanguage) {
-        return null;
+    public void update(ProgrammingLanguage programmingLanguage) {
+        ProgrammingLanguage extingProgrammingLanguage = getById(programmingLanguage.getId());
+        if (extingProgrammingLanguage != null) {
+            extingProgrammingLanguage.setName(programmingLanguage.getName());
+        }
     }
 
     @Override
-    public void delete(ProgrammingLanguage programmingLanguage) {
-        programmingLanguage.delete(programmingLanguage);
+    public void delete(int id) {
+        ProgrammingLanguage toRemoveProgrammingLanguage = getById(id);
+        if (toRemoveProgrammingLanguage != null) {
+            programmingLanguages.remove(toRemoveProgrammingLanguage);
+        }
     }
 
 

@@ -5,16 +5,19 @@ import Kodlama.io.Devs.dataAccess.abstracts.ProgrammingLanguageRepository;
 import Kodlama.io.Devs.entities.concretes.ProgrammingLanguage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 
 @Service
 public class ProgrammingLanguageManager implements ProgrammingLanguageService {
     private ProgrammingLanguageRepository programmingLanguageRepository;
+
     @Autowired
     public ProgrammingLanguageManager(ProgrammingLanguageRepository programmingLanguageRepository) {
         this.programmingLanguageRepository = programmingLanguageRepository;
     }
+
     @Override
     public List<ProgrammingLanguage> getAll() {
         return programmingLanguageRepository.getAll();
@@ -26,19 +29,27 @@ public class ProgrammingLanguageManager implements ProgrammingLanguageService {
     }
 
     @Override
-    public ProgrammingLanguage add(ProgrammingLanguage programmingLanguage) {
-        return programmingLanguageRepository.add(programmingLanguage);
+    public void add(ProgrammingLanguage programmingLanguage) throws Exception {
+        if (programmingLanguage.getName().isEmpty()) {
+            throw new Exception("Kurs bölümü boş bırakılamaz !");
+        }
+        for (ProgrammingLanguage existingProgrammingLanguage : programmingLanguageRepository.getAll()) {
+            if (existingProgrammingLanguage.getName().equalsIgnoreCase(programmingLanguage.getName())) {
+                throw new Exception("Bu kurs zaten mevcut !");
+            }
+        }
+        programmingLanguageRepository.add(programmingLanguage);
     }
 
     @Override
-    public ProgrammingLanguage update(ProgrammingLanguage programmingLanguage) {
-        return programmingLanguageRepository.update(programmingLanguage);
+    public void update(ProgrammingLanguage programmingLanguage) {
+        programmingLanguageRepository.update(programmingLanguage);
     }
 
     @Override
-    public void delete(ProgrammingLanguage programmingLanguage) {
-        programmingLanguageRepository.delete(programmingLanguage);
-
+    public void delete(int id) {
+        programmingLanguageRepository.delete(id);
     }
+
 
 }

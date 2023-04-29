@@ -2,6 +2,7 @@ package Kodlama.io.Devs.entities.concretes;
 
 
 import lombok.Data;
+
 import javax.persistence.*;
 
 @Data
@@ -38,5 +39,9 @@ public class ProgrammingLanguage {
     }
 
     public void delete(ProgrammingLanguage programmingLanguage) {
+    }
+
+    public ProgrammingLanguage add(ProgrammingLanguage programmingLanguage) {
+        return programmingLanguage;
     }
 }
